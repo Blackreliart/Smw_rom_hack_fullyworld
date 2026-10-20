@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172637">
+  <meta name="description" content="Informationen und Download zu Super Fully World.">
+  <title>Super Fully World — Super Mario World Hacks</title>
+  <style>
+    :root {
+      --navy: #172637;
+      --navy-deep: #101b29;
+      --blue: #6fa9d4;
+      --blue-soft: #263b51;
+      --page: #1b2938;
+      --paper: #202f3f;
+      --ink: #e8edf2;
+      --muted: #b1bdc9;
+      --line: #3a4c5e;
+      --yellow: #e7c354;
+      --max: 1040px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--ink);
+      background: #182536;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .site-background {
+      position: fixed;
+      z-index: 0;
+      inset: -1%;
+      width: 102%;
+      height: 102%;
+      object-fit: cover;
+      object-position: center;
+      pointer-events: none;
+      animation: background-drift 70s ease-in-out infinite alternate;
+    }
+    .background-tint {
+      position: fixed;
+      z-index: 0;
+      inset: 0;
+      pointer-events: none;
+      background: rgba(15, 30, 49, .2);
+    }
+    @keyframes background-drift {
+      from { transform: scale(1); }
+      to { transform: scale(1.025); }
+    }
+    header, main, footer { position: relative; z-index: 1; }
+    a { color: var(--blue); }
+    a:hover { color: #b8d8f1; }
+    .wrap { width: min(var(--max), calc(100% - 32px)); margin-inline: auto; }
+
+    .site-header {
+      color: #f4f6f8;
+      background: var(--navy);
+      border-bottom: 4px solid var(--yellow);
+      box-shadow: 0 3px 12px rgba(0, 0, 0, .2);
+    }
+    .header-main {
+      min-height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { color: white; font-size: 1rem; font-weight: 800; letter-spacing: .025em; text-decoration: none; }
+    .brand small { display: block; color: #cad6e2; font-size: .72rem; font-weight: 400; letter-spacing: .04em; }
+    .nav { display: flex; flex-wrap: wrap; gap: 4px; }
+    .nav a { padding: 8px 11px; color: #e4edf5; font-size: .88rem; text-decoration: none; }
+    .nav a:hover, .nav a:focus-visible { background: rgba(255, 255, 255, .12); color: white; }
+
+    main { padding: 26px 0 38px; }
+    .site-panel {
+      overflow: hidden;
+      border: 1px solid #3a4c5e;
+      background: var(--page);
+      box-shadow: 0 10px 34px rgba(0, 0, 0, .25);
+    }
+    .breadcrumbs {
+      padding: 9px 20px;
+      border-bottom: 1px solid var(--line);
+      background: #223447;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+    .breadcrumbs a { text-decoration: none; }
+    .breadcrumb-action { float: right; }
+    .content { padding: clamp(18px, 4vw, 30px); }
+    .hack-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 220px;
+      align-items: center;
+      gap: 26px;
+      padding: 0 0 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    .eyebrow { margin: 0 0 5px; color: var(--blue); font-size: .74rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    h1 { margin: 0; color: var(--ink); font-size: clamp(1.8rem, 4vw, 2.55rem); line-height: 1.15; }
+    .byline { margin: 9px 0 0; color: var(--muted); }
+    .byline strong { color: var(--ink); }
+    .logo { display: block; width: 100%; height: auto; border: 1px solid #202020; background: #050505; }
+
+    .section { margin-top: 25px; }
+    .section-heading {
+      margin: 0 0 12px;
+      padding: 7px 11px;
+      border: 1px solid #40576c;
+      border-left: 4px solid var(--blue);
+      background: var(--blue-soft);
+      color: #e5edf5;
+      font-size: 1.06rem;
+      font-weight: 700;
+    }
+    .section p { margin: 0 0 13px; }
+    .meta-table { width: 100%; border-collapse: collapse; background: var(--paper); }
+    .meta-table th, .meta-table td { padding: 10px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .meta-table th { width: 190px; background: #26384a; color: #dce5ed; font-weight: 700; }
+
+    .notice {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 13px 15px;
+      border: 1px solid #8a7840;
+      background: #3a3425;
+      color: #f0e8cf;
+    }
+    .notice img { width: 40px; height: 40px; object-fit: contain; flex: 0 0 auto; }
+    .notice-label { display: block; color: #e7c354; font-size: .7rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .extra-info { margin: 12px 0 0 !important; color: var(--muted); }
+
+    .screenshots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .screenshot-placeholder {
+      display: grid;
+      min-height: 150px;
+      place-items: center;
+      border: 1px dashed #61758a;
+      background: #202f3f;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    .download-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+    }
+    .download-box h3 { margin: 0 0 3px; color: var(--ink); font-size: 1rem; }
+    .download-box p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .download-button {
+      display: inline-block;
+      flex: 0 0 auto;
+      padding: 9px 15px;
+      border: 1px solid #6fa9d4;
+      border-radius: 3px;
+      background: var(--blue);
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .download-button:hover { background: #294e70; color: white; }
+    .credits { padding: 13px 15px; border: 1px solid var(--line); background: var(--paper); color: var(--muted); }
+    .credits p { margin: 0; }
+    footer { padding: 0 0 24px; color: #f2f4f6; font-size: .8rem; text-shadow: 0 1px 3px rgba(0, 0, 0, .75); }
+    footer .wrap { display: flex; justify-content: space-between; gap: 12px; }
+
+    @media (max-width: 700px) {
+      .header-main { align-items: flex-start; flex-direction: column; justify-content: center; gap: 8px; padding: 13px 0; }
+      .nav { margin-inline: -8px; }
+      .nav a { padding: 6px 8px; }
+      .hack-heading { grid-template-columns: 1fr; gap: 16px; }
+      .logo { width: min(100%, 440px); }
+      .meta-table th { width: 130px; }
+      .breadcrumb-action { float: none; display: block; margin-top: 3px; }
+      .screenshots { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .wrap { width: min(var(--max), calc(100% - 20px)); }
+      main { padding: 14px 0 24px; }
+      .breadcrumbs { padding-inline: 13px; }
+      .content { padding: 14px; }
+      .meta-table th, .meta-table td { padding: 8px; }
+      .download-box { align-items: flex-start; flex-direction: column; }
+      footer .wrap { flex-direction: column; gap: 3px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .site-background { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <img class="site-background" src="1 0C7.png" alt="" aria-hidden="true">
+  <div class="background-tint" aria-hidden="true"></div>
+
+  
+
+  <main id="top">
+    <div class="wrap site-panel">
+      <div class="breadcrumbs"><a href="#top">Super Mario World Hacks</a> › Super Fully World <span class="breadcrumb-action"> · </span></div>
+      <div class="content">
+        <section class="hack-heading" aria-labelledby="hack-title">
+          <div>
+            <p class="eyebrow">ROM-Hack · Für Fulltimegameslive</p>
+            <h1 id="hack-title">Super Fully World</h1>
+            <p class="byline">Erstellt für <strong>.ni_coooo</strong></p>
+          </div>
+          <img class="logo" src="readme.png" alt="Super Fully World">
+        </section>
+
+        <section class="section" id="details">
+          <h2 class="section-heading">Submission Details</h2>
+          <table class="meta-table">
+            <tbody>
+              <tr><th scope="row">Name</th><td>Super Fully World</td></tr>
+              <tr><th scope="row">Author</th><td>.ni_coooo&nbsp;</td></tr>
+              <tr></tr>
+              <tr><th scope="row">Length</th><td>kurz</td></tr>
+              <tr><th scope="row">Difficulty</th><td>Mittel bis schwer</td></tr>
+              <tr></tr>
+              <tr>hne Power-ups. Schon der erste Treffer beendet den Versuch.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="section" id="download">
+          <h2 class="section-heading">Download</h2>
+          <div class="download-box">
+            <div>
+              <h3>Super Fully World</h3>
+              
+            </div>
+            <!-- Platzhalter: durch deinen echten Download-Link ersetzen. -->
+            <a class="download-button" href="https://example.com/dein-download">Download</a>
+          </div>
+        </section>
+
+        <section class="section" id="screenshots">
+          
+          
+        </section>
+
+        <section class="section" id="regeln">
+          <h2 class="section-heading">Additional Information</h2>
+          <div class="notice">
+            <img src="savestate.png" alt="">
+            <div><span class="notice-label">Wichtiger Hinweis</span><strong>Bitte keine Savestates verwenden.</strong></div>
+          </div>
+          
+        </section>
+
+        <section class="section" id="credits">
+          <h2 class="section-heading">Danke fürs Spielen!</h2>
+          <div class="credits"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap"><span>Super Fully World</span><span>.ni_coooo</span></div>
+  </footer>
+</body>
+</html>

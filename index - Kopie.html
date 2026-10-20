@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11131a">
+  <title>Super Fully World — Readme</title>
+  <style>
+    :root { --ink: #f5f1e7; --muted: #c2c0b8; --line: rgba(255, 255, 255, .2); --panel: rgba(16, 18, 24, .76); --panel-strong: rgba(16, 18, 24, .9); --yellow: #f2cd52; --red: #e45b50; --green: #8dca86; --blue: #91d4df; --width: 960px; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { position: relative; min-height: 100vh; margin: 0px; color: var(--ink); background-color: rgb(17, 19, 26); font-family: "Segoe UI", Arial, sans-serif; font-size: 16px; line-height: 1.65; }
+.site-background { position: fixed; z-index: 0; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center center; pointer-events: none; }
+.topbar, main, footer { position: relative; z-index: 1; }
+a { color: inherit; }
+.wrap { width: min(var(--width), calc(100% - 36px)); margin-inline: auto; }
+.topbar { border-bottom: 1px solid var(--line); background: rgba(12, 14, 19, 0.72); backdrop-filter: blur(8px); }
+.topbar .wrap { min-height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.top-label, .top-note { font-size: 0.76rem; font-weight: 750; letter-spacing: 0.12em; text-transform: uppercase; }
+.top-label { color: var(--yellow); }
+.top-note { color: var(--muted); }
+main { padding: clamp(30px, 6vw, 72px) 0px 50px; }
+.hero { padding: clamp(20px, 4vw, 38px); border: 1px solid var(--line); background: var(--panel-strong); box-shadow: rgba(0, 0, 0, 0.28) 0px 18px 60px; text-align: center; backdrop-filter: blur(8px); }
+.logo { display: block; width: min(100%, 680px); height: auto; margin: 0px auto 30px; border: 1px solid rgba(255, 255, 255, 0.14); background: rgb(5, 5, 5); }
+.eyebrow { margin: 0px 0px 8px; color: var(--yellow); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.17em; text-transform: uppercase; background-image: none; background-blend-mode: multiply; background-clip: text; display: block; }
+h1 { margin: 0px; font-size: clamp(2.4rem, 7vw, 4.8rem); font-weight: 850; letter-spacing: -0.065em; line-height: 1; }
+.intro { max-width: 620px; margin: 16px auto 24px; color: var(--muted); font-size: clamp(1rem, 2vw, 1.14rem); }
+.actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.button { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; padding: 9px 17px; border: 1px solid var(--yellow); border-radius: 3px; background: var(--yellow); color: rgb(33, 30, 20); font-size: 0.9rem; font-weight: 800; text-decoration: none; transition: transform 0.15s, background 0.15s; }
+.button:hover { transform: translateY(-2px); background: rgb(255, 224, 121); }
+.button.outline { background: transparent; color: var(--ink); border-color: var(--line); }
+.button.outline:hover { background: rgba(255, 255, 255, 0.12); }
+.notice { display: grid; grid-template-columns: 54px 1fr; align-items: center; gap: 16px; margin: 18px 0px 44px; padding: 17px 20px; border-top: 1px solid rgba(242, 205, 82, 0.55); border-right: 1px solid rgba(242, 205, 82, 0.55); border-bottom: 1px solid rgba(242, 205, 82, 0.55); border-image: none; border-left: 4px solid var(--yellow); background: rgba(39, 33, 20, 0.86); backdrop-filter: blur(6px); }
+.notice img { width: 48px; height: 48px; object-fit: contain; }
+.notice-label { display: block; margin-bottom: 2px; color: var(--yellow); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+.notice strong { font-size: 1.05rem; }
+.section { margin: 0px 0px 42px; }
+.section-title { display: flex; align-items: baseline; gap: 12px; margin: 0px 0px 16px; }
+.number { color: var(--yellow); font-size: 0.78rem; font-weight: 850; letter-spacing: 0.1em; }
+h2 { margin: 0px; font-size: clamp(1.55rem, 4vw, 2.15rem); letter-spacing: -0.04em; line-height: 1.15; }
+.section-intro { max-width: 690px; margin: 0px 0px 18px; color: var(--muted); }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.card { min-height: 150px; padding: 19px; border: 1px solid var(--line); background: var(--panel); backdrop-filter: blur(7px); }
+.card-mark { display: block; width: 9px; height: 9px; margin-bottom: 15px; border-radius: 50%; background: var(--blue); }
+.card:nth-child(2) .card-mark { background: var(--green); }
+.card:nth-child(3) .card-mark { background: var(--red); }
+.card h3 { margin: 0px 0px 6px; font-size: 1rem; }
+.card p { margin: 0px; color: var(--muted); font-size: 0.93rem; }
+.download { display: flex; align-items: center; justify-content: space-between; gap: 22px; padding: 21px; border: 1px solid var(--line); background: var(--panel); backdrop-filter: blur(7px); }
+.download h3 { margin: 0px 0px 3px; font-size: 1.08rem; }
+.download p { margin: 0px; color: var(--muted); font-size: 0.92rem; }
+.thanks { padding: 23px; border: 1px solid var(--line); background: var(--panel-strong); text-align: center; backdrop-filter: blur(7px); }
+.thanks h2 { margin-bottom: 7px; }
+.thanks p { max-width: 620px; margin: 0px auto; color: var(--muted); }
+footer { padding: 18px 0px 28px; color: rgb(225, 222, 213); font-size: 0.8rem; text-shadow: rgb(0, 0, 0) 0px 1px 4px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 14px; }
+@media (max-width: 650px) {
+  .wrap { width: min(var(--width), calc(100% - 24px)); }
+  .top-note { display: none; }
+  main { padding-top: 18px; }
+  .hero { padding: 18px 14px 22px; }
+  .logo { margin-bottom: 22px; }
+  .notice { grid-template-columns: 42px 1fr; gap: 12px; padding: 14px; margin-bottom: 34px; }
+  .notice img { width: 40px; height: 40px; }
+  .cards { grid-template-columns: 1fr; }
+  .card { min-height: 0px; }
+  .card-mark { margin-bottom: 9px; }
+  .download { align-items: flex-start; flex-direction: column; }
+  footer .wrap { flex-direction: column; gap: 3px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, ::before, ::after { transition-duration: 0.01ms !important; }
+}
+
+
+
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+  <img class="site-background" src="1 0C7.png" alt="" aria-hidden="true">
+  <header class="topbar">
+    <div class="wrap">
+      <span class="top-label">Super Mario World · Fanprojekt</span>
+      <span class="top-note">Readme-Vorlage</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <header class="hero">
+        <img class="logo" src="readme.png" alt="Super Fully World">
+        <p class="eyebrow" style="position: absolute; top: 330px; left: -566px; width: 886px; height: 113px;">ROM-Hack · Für Fulltimegameslive</p>
+        
+        
+        <div class="actions">
+          
+          
+        </header>
+
+      <aside class="notice">
+        <img src="savestate.png" alt="">
+        <div>
+          <span class="notice-label">Wichtiger Hinweis</span>
+          <strong>Bitte keine Savestates verwenden.</strong>
+          
+        </div>
+      </aside>
+
+      <article class="card">
+            <span class="card-mark" aria-hidden="true"></span>
+            
+            <p><p data-pm-slice="1 1 []" style="font-size: 16px;">Dieser Hack beinhaltet keine Powerups.&nbsp;<br>Du bist also beim ersten Treffer tot.<br>Schwierigkeitsgrad:<br>&nbsp; -mittel bis schwer&nbsp;<br></p><br></p>
+          </article><section class="section" id="infos">
+        esen Vorlagentext durch eine kurze Beschreibung. Halte die Infos knapp und ergänze nur, was Spieler vor dem Start wissen sollten.</p>
+        <div class="cards">
+          
+          
+          
+        </div>
+      </section>
+
+      <section class="section" id="download">
+        
+        <div class="download">
+          <div>
+            <h3>Patch-Datei</h3>
+            
+          </div>
+          <a class="button" href="https://example.com/dein-download">Zum Download</a>
+        </div>
+      </section>
+
+      <section class="section thanks">
+        <h2>Danke fürs Spielen!</h2>
+        <p>Nutze diesen Bereich für Credits, Danksagungen oder deine Projektlinks.</p>
+      </section>
+    </div>
+  </main>
+
+  
+</body>
+</html>
